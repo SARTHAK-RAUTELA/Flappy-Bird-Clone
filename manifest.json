@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "HEXDRIFT - Flappy Maka",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Play HEXDRIFT Flappy Maka! By Sarthak Rautela.",
   "action": {
     "default_icon": {
