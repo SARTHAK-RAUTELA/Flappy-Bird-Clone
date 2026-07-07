@@ -598,7 +598,17 @@ function drawGameOverScreen(){
 }
 
 // ── Main Loop ──────────────────────────────────────────────────
-function gameLoop(){
+// Lock game logic to 60fps regardless of monitor refresh rate (120Hz/144Hz
+// screens fire requestAnimationFrame faster, which made the game run too fast).
+const FRAME_TIME = 1000 / 60;
+let frameAcc = 0, lastFrameStamp = 0;
+function gameLoop(now){
+  requestAnimationFrame(gameLoop);
+  if(lastFrameStamp) frameAcc += now - lastFrameStamp;
+  else frameAcc = FRAME_TIME; // first frame runs immediately
+  lastFrameStamp = now;
+  if(frameAcc < FRAME_TIME - 0.5) return;              // not time for a 60fps step yet
+  frameAcc = Math.min(frameAcc - FRAME_TIME, FRAME_TIME * 2); // consume one step, cap leftover (no fast-forward after tab switch)
   frame++;
   const shakeX=shakeAmount>0.5?(Math.random()-0.5)*shakeAmount:0;
   const shakeY=shakeAmount>0.5?(Math.random()-0.5)*shakeAmount:0;
@@ -621,7 +631,6 @@ function gameLoop(){
   }
 
   ctx.restore();
-  requestAnimationFrame(gameLoop);
 }
 
-gameLoop();
+requestAnimationFrame(gameLoop);
