@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>HEXDRIFT Flappy Maka Aaaaag!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a0a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Arial Black', sans-serif;
+    touch-action: none;
+    user-select: none;
+  }
+  #gameContainer {
+    position: relative;
+    box-shadow: 0 0 60px rgba(255,200,0,0.4), 0 0 120px rgba(255,100,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid rgba(255,200,0,0.6);
+  }
+  #gameCanvas { display: block; image-rendering: pixelated; }
+  #disclaimer {
+    position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.4); font-size: 9px; text-align: center;
+    pointer-events: none; max-width: 400px; font-family: Arial, sans-serif; line-height: 1.4;
+  }
+  #credit {
+    position: fixed; top: 8px; right: 12px;
+    color: rgba(255,220,80,0.7); font-size: 11px; text-align: right;
+    pointer-events: none; font-family: Arial, sans-serif;
+    letter-spacing: 0.5px; text-shadow: 0 0 8px rgba(255,200,0,0.5);
+  }
+</style>
+</head>
+<body>
+<div id="gameContainer"><canvas id="gameCanvas"></canvas></div>
+<div id="disclaimer">⚠️ Fan-made parody game. All characters are original fictional creations for comedic purposes only. Download only from trusted sources.</div>
+<div id="credit">✦ By Sarthak Rautela</div>
+<script src="game.js"></script>
+</body>
+</html>
